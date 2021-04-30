@@ -45,9 +45,9 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Package
-        id: build_gradle
+        id: package
         run: |
-          ./gradlew deploy
+          ./gradlew deploy && \
          zip --junk-paths modules.zip bundles/deploy/* bundles/osgi/modules/*
       - name: Upload Release Assets
         id: upload_release_asset
